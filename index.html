@@ -62,19 +62,22 @@
 
 .header-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease;
   text-align: center;
+  flex-direction: column;
 }
 
 .sticky-header.scrolled .header-content {
   opacity: 1;
   visibility: visible;
 }
+
 
 .header-content .logo {
   width: 40px;
@@ -122,26 +125,21 @@
 
     /* Main hero section */
     .hero {
-      background-image: url('IMG_8043.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
+  height: 100vh;
+  background-image: url('IMG_8043.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.4);
-      z-index: 0;
-    }
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
 
     .hero .content {
       position: relative;
@@ -247,37 +245,31 @@
 </head>
   
 <body>
-  <!-- Sticky navigation header that changes on scroll -->
-  <header class="sticky-header" id="stickyHeader">
-    <nav class="main-nav">
-  <div class="nav-left">
-    <a href="#acerca">Acerca de Ahma</a>
-    <a href="#galeria">Galería</a>
-    <a href="#contacto">Contacto</a>
-  </div>
-
-  <div class="header-content">
-    <img src="ChatGPT Image 21 abr 2025, 06_26_38 p.m..png" alt="Logo Ahma" class="logo">
-    <div>
-      <h1>Ahma</h1>
-      <p>Una experiencia de paz frente a la laguna de Bacalar</p>
+<!-- Sticky navigation header -->
+<header class="sticky-header" id="stickyHeader">
+  <nav class="main-nav">
+    <div class="nav-left">
+      <a href="#acerca">Acerca de Ahma</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
     </div>
-  </div>
 
-  <a href="#contacto" class="nav-cta">Reserva ahora</a>
-</nav>
-
-  </header>
-
-  <!-- Hero section -->
-  <section class="hero">
-    <div class="content">
+    <div class="header-content">
       <img src="ChatGPT Image 21 abr 2025, 06_26_38 p.m..png" alt="Logo Ahma" class="logo">
-      <h1>Ahma</h1>
-      <p>Una experiencia de paz frente a la laguna de Bacalar</p>
-      <a href="#contacto" class="cta">Reserva ahora</a>
+      <div>
+        <h1>Ahma</h1>
+        <p>Una experiencia de paz frente a la laguna de Bacalar</p>
+      </div>
+      <a href="#contacto" class="nav-cta">Reserva ahora</a>
     </div>
-  </section>
+  </nav>
+</header>
+
+<!-- Hero section -->
+<section class="hero">
+  <!-- Solo fondo, ya no contiene texto -->
+</section>
+
 
   <!-- Welcome section -->
   <section id="acerca">
@@ -317,17 +309,17 @@
   </footer>
 
   <script>
-    // JavaScript to update the header when scrolled past the hero section
-    window.addEventListener('scroll', function() {
-      const header = document.getElementById('stickyHeader');
-      const heroHeight = document.querySelector('.hero').offsetHeight;
-      
-      if (window.scrollY > heroHeight - 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  </script>
+  window.addEventListener('scroll', function() {
+    const header = document.getElementById('stickyHeader');
+    const heroHeight = document.querySelector('.hero').offsetHeight;
+
+    if (window.scrollY > heroHeight - 100) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
+
 </body>
 </html>
