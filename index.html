@@ -35,14 +35,13 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
-  .main-nav {
+ .main-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
   position: relative;
 }
-
 .nav-left {
   display: flex;
   gap: 2rem;
@@ -60,18 +59,20 @@
   color: #6b4d3b;
 }
 
+/* Centrar el logo + Ahma */
 .header-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
+  text-align: center;
+  flex-direction: column;
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease;
-  text-align: center;
-  flex-direction: column;
+  flex: 1;
 }
+
 
 .sticky-header.scrolled .header-content {
   opacity: 1;
@@ -92,8 +93,6 @@
 
 .header-content p {
   display: none;
-  font-size: 0.8rem;
-  color: #555;
 }
 
 @media (min-width: 768px) {
@@ -102,17 +101,18 @@
   }
 }
 
-    .nav-cta {
-      position: absolute;
-      right: 20px;
-      background-color: #333;
-      color: white !important;
-      padding: 8px 16px;
-      border-radius: 20px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s ease;
-    }
+    /* Botón Reserva */
+.nav-cta {
+  background-color: #333;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  opacity: 0;
+  visibility: hidden;
+  position: relative;
+}
+
 
     .sticky-header.scrolled .nav-cta {
       opacity: 1;
@@ -268,14 +268,13 @@
 
     <div class="header-content">
       <img src="ChatGPT Image 21 abr 2025, 06_26_38 p.m..png" alt="Logo Ahma" class="logo">
-      <div>
-        <h1>Ahma</h1>
-        <p>Una experiencia de paz frente a la laguna de Bacalar</p>
-      </div>
-      <a href="#contacto" class="nav-cta">Reserva ahora</a>
+      <h1>Ahma</h1>
     </div>
+
+    <a href="#contacto" class="nav-cta">Reserva ahora</a>
   </nav>
 </header>
+
 
 <!-- Hero section -->
 <section class="hero">
