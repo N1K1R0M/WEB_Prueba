@@ -61,6 +61,10 @@
 
 /* Centrar el logo + Ahma */
 .header-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,9 +74,7 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease;
-  flex: 1;
 }
-
 
 .sticky-header.scrolled .header-content {
   opacity: 1;
