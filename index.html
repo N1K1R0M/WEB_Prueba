@@ -6,62 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahma - Casa en Bacalar</title>
   <style>
-    .sticky-header {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  background-color: rgba(248, 245, 241, 0.95); /* Fondo suave con transparencia */
-  backdrop-filter: blur(6px);
-  text-align: center;
-  padding: 1rem 0;
-  transition: all 0.4s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.sticky-header .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.sticky-header .logo {
-  width: 80px;
-  height: auto;
-  transition: all 0.3s ease-in-out;
-}
-
-.sticky-header h1 {
-  margin: 0;
-  font-size: 2.2rem;
-}
-
-.sticky-header p {
-  margin: 0;
-  font-size: 1rem;
-  color: #555;
-}
-
-.main-nav {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.main-nav a {
-  text-decoration: none;
-  color: #3b3b3b;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
-
-.main-nav a:hover {
-  color: #6b4d3b;
-}
-
     * {
       margin: 0;
       padding: 0;
@@ -70,15 +14,115 @@
     }
 
     body {
-      
-  font-family: 'Cormorant Garamond', serif;
-  background-color: #f8f5f1;
-  color: #333;
-  line-height: 1.6;
-}
+      font-family: 'Cormorant Garamond', serif;
+      background-color: #f8f5f1;
+      color: #333;
+      line-height: 1.6;
+    }
 
-    header {
-      background-image: url('IMG_6908.jpg');
+    /* Sticky navigation that changes on scroll */
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background-color: rgba(248, 245, 241, 0.95);
+      backdrop-filter: blur(6px);
+      text-align: center;
+      padding: 0.8rem 0;
+      transition: all 0.4s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    /* Initial navigation layout */
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      gap: 4rem; /* Space for the logo to appear in the middle */
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: #3b3b3b;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .main-nav a:hover {
+      color: #6b4d3b;
+    }
+
+    /* Header content that appears on scroll */
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+      gap: 1rem;
+    }
+
+    /* When scrolled, show the content */
+    .sticky-header.scrolled .header-content {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .header-content .logo {
+      width: 40px;
+      height: auto;
+    }
+
+    .header-content h1 {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    .header-content p {
+      display: none; /* Hide on smaller screens */
+    }
+
+    @media (min-width: 768px) {
+      .header-content p {
+        display: block;
+        font-size: 0.9rem;
+        color: #555;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .nav-cta {
+      position: absolute;
+      right: 20px;
+      background-color: #333;
+      color: white !important;
+      padding: 8px 16px;
+      border-radius: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .sticky-header.scrolled .nav-cta {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-cta:hover {
+      background-color: #555;
+    }
+
+    /* Main hero section */
+    .hero {
+      background-image: url('/api/placeholder/1200/800');
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -91,7 +135,7 @@
       position: relative;
     }
 
-    header::after {
+    .hero::after {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -99,17 +143,17 @@
       z-index: 0;
     }
 
-    header .content {
+    .hero .content {
       position: relative;
       z-index: 1;
     }
 
-    header img.logo {
+    .hero img.logo {
       width: 100px;
       margin-bottom: 20px;
     }
 
-    header h1 {
+    .hero h1 {
       font-size: 4rem;
       margin-bottom: 10px;
     }
@@ -144,10 +188,19 @@
       align-items: center;
     }
 
+    .two-col > div {
+      flex: 1;
+      min-width: 300px;
+    }
+
     .two-col img {
       width: 100%;
       max-width: 500px;
       border-radius: 10px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
     }
 
     .gallery {
@@ -194,44 +247,57 @@
 </head>
   
 <body>
-  
-  <header class="sticky-header">
-  <div class="content">
-    <img src="ChatGPT Image 21 abr 2025, 06_26_38 p.m..png" alt="Logo Ahma" class="logo">
-    <h1>Ahma</h1>
-    <p>Una experiencia de paz frente a la laguna de Bacalar</p>
-    <a href="#contacto" class="cta">Reserva ahora</a>
-  </div>
-  <nav class="main-nav">
-    <a href="#">Acerca de Ahma</a>
-    <a href="#">Más hoteles</a>
-    <a href="#">Cosas que hacer</a>
-    <a href="#">Contacto</a>
-  </nav>
-</header>
+  <!-- Sticky navigation header that changes on scroll -->
+  <header class="sticky-header" id="stickyHeader">
+    <nav class="main-nav">
+      <a href="#acerca">Acerca de Ahma</a>
+      <a href="#galeria">Galería</a>
+      
+      <!-- This content appears when scrolled -->
+      <div class="header-content">
+        <img src="/api/placeholder/40/40" alt="Logo Ahma" class="logo">
+        <h1>Ahma</h1>
+        <p>Una experiencia de paz frente a la laguna de Bacalar</p>
+      </div>
+      
+      <a href="#contacto">Contacto</a>
+      <a href="#contacto" class="nav-cta">Reserva ahora</a>
+    </nav>
+  </header>
 
+  <!-- Hero section -->
+  <section class="hero">
+    <div class="content">
+      <img src="/api/placeholder/100/100" alt="Logo Ahma" class="logo">
+      <h1>Ahma</h1>
+      <p>Una experiencia de paz frente a la laguna de Bacalar</p>
+      <a href="#contacto" class="cta">Reserva ahora</a>
+    </div>
+  </section>
 
-  <section>
+  <!-- Welcome section -->
+  <section id="acerca">
     <div class="two-col">
       <div>
         <h2>Bienvenido a Ahma</h2>
         <p>Descubre una casa pensada para el descanso total. Con arquitectura en chukum y espacios naturales, Ahma es el lugar ideal para reconectar con la tranquilidad y la belleza de Bacalar.</p>
       </div>
-      <img src="IMG_6908.jpg" alt="Casa Ahma">
+      <img src="/api/placeholder/500/300" alt="Casa Ahma">
     </div>
   </section>
 
-  <section>
-  <h2>Galería</h2>
-  <div class="gallery">
-    <img src="IMG_8043.jpg" alt="Casa Ahma 1">
-    <img src="IMG_6902.jpg" alt="Casa Ahma 2">
-    <img src="IMG_6904.jpg" alt="Casa Ahma 3">
-    <img src="IMG_6908.jpg" alt="Casa Ahma 4">
-  </div>
-</section>
+  <!-- Gallery section -->
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery">
+      <img src="/api/placeholder/300/200" alt="Casa Ahma 1">
+      <img src="/api/placeholder/300/200" alt="Casa Ahma 2">
+      <img src="/api/placeholder/300/200" alt="Casa Ahma 3">
+      <img src="/api/placeholder/300/200" alt="Casa Ahma 4">
+    </div>
+  </section>
 
-
+  <!-- Contact section -->
   <section id="contacto">
     <h2>Contáctanos</h2>
     <form>
@@ -245,5 +311,19 @@
   <footer>
     &copy; 2025 Casa Ahma - Bacalar. Todos los derechos reservados.
   </footer>
+
+  <script>
+    // JavaScript to update the header when scrolled past the hero section
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('stickyHeader');
+      const heroHeight = document.querySelector('.hero').offsetHeight;
+      
+      if (window.scrollY > heroHeight - 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
