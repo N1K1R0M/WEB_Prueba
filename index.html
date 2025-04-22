@@ -35,69 +35,69 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
-    /* Initial navigation layout */
-    .main-nav {
-      display: flex;
-      justify-content: center;
-      position: relative;
-      gap: 4rem; /* Space for the logo to appear in the middle */
-    }
+  .main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  position: relative;
+}
 
-    .main-nav a {
-      text-decoration: none;
-      color: #3b3b3b;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
+.nav-left {
+  display: flex;
+  gap: 2rem;
+}
 
-    .main-nav a:hover {
-      color: #6b4d3b;
-    }
+.nav-left a {
+  text-decoration: none;
+  color: #3b3b3b;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
 
-    /* Header content that appears on scroll */
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s ease;
-      gap: 1rem;
-    }
+.nav-left a:hover {
+  color: #6b4d3b;
+}
 
-    /* When scrolled, show the content */
-    .sticky-header.scrolled .header-content {
-      opacity: 1;
-      visibility: visible;
-    }
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  text-align: center;
+}
 
-    .header-content .logo {
-      width: 40px;
-      height: auto;
-    }
+.sticky-header.scrolled .header-content {
+  opacity: 1;
+  visibility: visible;
+}
 
-    .header-content h1 {
-      font-size: 1.6rem;
-      margin: 0;
-    }
+.header-content .logo {
+  width: 40px;
+  height: auto;
+  margin-bottom: 0.2rem;
+}
 
-    .header-content p {
-      display: none; /* Hide on smaller screens */
-    }
+.header-content h1 {
+  font-size: 1.3rem;
+  margin: 0;
+}
 
-    @media (min-width: 768px) {
-      .header-content p {
-        display: block;
-        font-size: 0.9rem;
-        color: #555;
-        margin-left: 0.5rem;
-      }
-    }
+.header-content p {
+  display: none;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+@media (min-width: 768px) {
+  .header-content p {
+    display: block;
+  }
+}
 
     .nav-cta {
       position: absolute;
@@ -250,19 +250,23 @@
   <!-- Sticky navigation header that changes on scroll -->
   <header class="sticky-header" id="stickyHeader">
     <nav class="main-nav">
-      <a href="#acerca">Acerca de Ahma</a>
-      <a href="#galeria">Galería</a>
-      
-      <!-- This content appears when scrolled -->
-      <div class="header-content">
-        <img src="ChatGPT Image 21 abr 2025, 06_26_38 p.m..png" alt="Logo Ahma" class="logo">
-        <h1>Ahma</h1>
-        <p>Una experiencia de paz frente a la laguna de Bacalar</p>
-      </div>
-      
-      <a href="#contacto">Contacto</a>
-      <a href="#contacto" class="nav-cta">Reserva ahora</a>
-    </nav>
+  <div class="nav-left">
+    <a href="#acerca">Acerca de Ahma</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <div class="header-content">
+    <img src="ChatGPT Image 21 abr 2025, 06_26_38 p.m..png" alt="Logo Ahma" class="logo">
+    <div>
+      <h1>Ahma</h1>
+      <p>Una experiencia de paz frente a la laguna de Bacalar</p>
+    </div>
+  </div>
+
+  <a href="#contacto" class="nav-cta">Reserva ahora</a>
+</nav>
+
   </header>
 
   <!-- Hero section -->
